@@ -21,4 +21,8 @@
   <p>
     <%= form.submit %>
   </p>
+  <p>
+    <%= link_to "Delete", article_path(@article), data: { "turbo-method": :delete, turbo_confirm: "Are you sure?" } %> |
+    <%= link_to "Cancel and return to articles listing", articles_path %>
+  </p>
 <% end %>
