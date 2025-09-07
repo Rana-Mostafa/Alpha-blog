@@ -3,9 +3,13 @@
 <%= gravatar_for @user, size: 200 %>
 
   <div class="text-center mt-4">
-    <% if logged_in? && @user == current_user %>
+    <% if logged_in? %>
+      <% if @user == current_user %>
       <%= link_to "Edit your profile", edit_user_path(@user), class: "btn btn-outline-info" %>
-      <%= link_to "Delete your profile", users_path(), class: "btn btn-outline-danger", method: :delete %>
+      <% end %>
+      <% if current_user.admin? %>
+      <%= link_to "Delete profile", users_path(), class: "btn btn-outline-danger", method: :delete %>
+      <% end %>
     <% end %>
   </div>
 
